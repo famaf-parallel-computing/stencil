@@ -1,0 +1,8 @@
+# CMake
+build/
+out/
+
+compile_commands.json
+
+# clangd
+.cache
