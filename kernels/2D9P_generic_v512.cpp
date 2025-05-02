@@ -58,10 +58,10 @@ void stencil_2D_9P_generic_v512_inner_bperm(uint32_t n, float *__restrict in,
 }
 
 // build unaligned with permutes
-void tencil_2D_9P_generic_v512_outer_bperm(uint32_t n, float *__restrict in,
+void stencil_2D_9P_generic_v512_outer_bperm(uint32_t n, float *__restrict in,
                                            float *__restrict out) {
-  for (uint32_t i = 2; i < n - 4; i += 2) {
-    for (uint32_t j = 2; j < n - 10; j += 8) {
+  for (uint32_t i = 2; i <= n - 4; i += 2) {
+    for (uint32_t j = 2; j <= n - 10; j += 8) {
       auto uh = *(f32x16 *)(&in[(i - 2) * n + j]);
       auto ul = *(f32x16 *)(&in[(i - 1) * n + j]);
       auto dh = *(f32x16 *)(&in[(i + 2) * n + j]);
