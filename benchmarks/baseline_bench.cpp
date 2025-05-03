@@ -1,3 +1,4 @@
+#include <cstdint>
 #include <memory>
 
 #include <benchmark/benchmark.h>
@@ -17,6 +18,10 @@ static void BM_2D5P_baseline(benchmark::State &state) {
   for (auto _ : state) {
     stencil_2D_5P(n, in.get(), out.get());
   }
+
+  const double operations = 6 * state.range(0) * state.range(0);
+  state.counters["FLOPS"] = benchmark::Counter(
+      operations, benchmark::Counter::kIsIterationInvariantRate);
 }
 BENCHMARK(BM_2D5P_baseline)->RangeMultiplier(2)->Range(32, 4096);
 
@@ -29,6 +34,10 @@ static void BM_2D9P_baseline(benchmark::State &state) {
   for (auto _ : state) {
     stencil_2D_9P(n, in.get(), out.get());
   }
+
+  const double operations = 10 * state.range(0) * state.range(0);
+  state.counters["FLOPS"] = benchmark::Counter(
+      operations, benchmark::Counter::kIsIterationInvariantRate);
 }
 BENCHMARK(BM_2D9P_baseline)->RangeMultiplier(2)->Range(32, 4096);
 
