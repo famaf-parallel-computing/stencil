@@ -8,6 +8,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_COLOR_DIAGNOSTICS ON)
 
+find_package(OpenMP REQUIRED)
+
 add_subdirectory(util)
 
 add_subdirectory(kernels)
