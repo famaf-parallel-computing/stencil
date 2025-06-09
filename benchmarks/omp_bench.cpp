@@ -38,7 +38,7 @@ static void BM_omp_simd_2D9P(benchmark::State &state) {
   state.counters["FLOPS"] = benchmark::Counter(
       operations, benchmark::Counter::kIsIterationInvariantRate);
 }
-BENCHMARK(BM_omp_simd_2D5P)->RangeMultiplier(2)->Range(32, 32768);
+BENCHMARK(BM_omp_simd_2D9P)->RangeMultiplier(2)->Range(32, 32768);
 
 static void BM_omp_par_simd_2D5P(benchmark::State &state) {
   const int n = state.range(0) + 4; // nxn + 4
@@ -70,6 +70,6 @@ static void BM_omp_par_simd_2D9P(benchmark::State &state) {
   state.counters["FLOPS"] = benchmark::Counter(
       operations, benchmark::Counter::kIsIterationInvariantRate);
 }
-BENCHMARK(BM_omp_par_simd_2D5P)->RangeMultiplier(2)->Range(32, 32768);
+BENCHMARK(BM_omp_par_simd_2D9P)->RangeMultiplier(2)->Range(32, 32768);
 
 BENCHMARK_MAIN();
